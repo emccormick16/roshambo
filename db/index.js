@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-const db = new Sequelize("postgres://localhost:5444/sequelize_intro");
+const db = new Sequelize("postgres://localhost:5432/roshambo");
 
 const Games = db.define("game", {
   result: {
