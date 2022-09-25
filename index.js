@@ -2,6 +2,9 @@ const { Player, Games } = require("./db");
 
 const express = require("express");
 const app = express();
+const gameRouter = require("./routes/game");
+
+app.use("/game", gameRouter);
 
 app.get("/", async (req, res, next) => {
   res.send("connected");

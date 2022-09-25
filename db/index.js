@@ -2,6 +2,7 @@ const Sequelize = require("sequelize");
 
 const db = new Sequelize("postgres://localhost:5432/roshambo");
 
+//instantiating Games table
 const Games = db.define("game", {
   result: {
     type: Sequelize.STRING,
@@ -10,6 +11,7 @@ const Games = db.define("game", {
   },
 });
 
+//instantiating Player table
 const Player = db.define("player", {
   username: {
     type: Sequelize.STRING,
