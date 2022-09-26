@@ -3,8 +3,10 @@ const { Player, Games } = require("./db");
 const express = require("express");
 const app = express();
 const gameRouter = require("./routes/game");
+const playerRouter = require("./routes/player");
 
 app.use("/game", gameRouter);
+app.use("/player", playerRouter);
 
 app.get("/", async (req, res, next) => {
   res.send("connected");
