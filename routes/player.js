@@ -2,7 +2,10 @@ const express = require("express");
 const router = express.Router();
 const html = require("html-template-tag");
 
+router.use(express.urlencoded({ extended: false }));
+
 const { Player, Games } = require("../db");
+const { put } = require("./game");
 
 router.get("/", async (req, res, next) => {
   const players = await Player.findAll();
@@ -58,6 +61,15 @@ router.get("/:playerId", async (req, res, next) => {
         </body>
       </html>`
   );
+});
+
+router.put("/:playerId", async (req, res, next) => {
+  const newValue = {};
+  if (req.body.username) newValue.username = req.body.username;
+  const foundPlayer = await Player.findByPk(+req.params.playerId);
+  const newUsername = await foundPlayer.update(newValue);
+
+  res.send(newUsername);
 });
 
 module.exports = router;
